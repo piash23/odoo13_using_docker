@@ -7,6 +7,7 @@
     'license': 'LGPL-3',
     'depends': ['base', 'mail'],
     'data': [
+        'views/patients.xml',
     ],
     'demo': [
 

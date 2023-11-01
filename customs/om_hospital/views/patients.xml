@@ -1,0 +1,54 @@
+<!-- FILEPATH: /workspaces/odoo13_using_docker/customs/om_hospital/views/patients.xml -->
+
+<odoo>
+    <data>
+        <!-- Define the view for the hospital.patient model -->
+        <record id="view_hospital_patient_form" model="ir.ui.view">
+            <field name="name">hospital.patient.form</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="patinet_name" />
+                                <field name="patinet_age" />
+                            </group>
+                            <group>
+                                <field name="notes" />
+                                <field name="image" />
+                            </group>
+
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hospital_patient_view_tree" model="ir.ui.view">
+            <field name="name">hospital.patient.view.tree</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <tree string="Hospital Paitnet">
+                    <field name="patinet_name" />
+                    <field name="patinet_age" />
+                    <field name="notes" />
+
+                </tree>
+            </field>
+        </record>
+
+        <!-- Define the action for the hospital.patient model -->
+        <record id="action_hospital_patient" model="ir.actions.act_window">
+            <field name="name">Hospital Patients</field>
+            <field name="res_model">hospital.patient</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Define the menu item for the hospital.patient model -->
+        <menuitem id="menu_hospital_patient" name="Hospital Patients" />
+        <menuitem id="menu_hospital_patient_form" name="Patients" parent="menu_hospital_patient"
+            action="action_hospital_patient" />
+    </data>
+</odoo>
