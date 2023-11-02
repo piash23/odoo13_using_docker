@@ -12,6 +12,7 @@
                         <group>
                             <group>
                                 <field name="patinet_name" />
+                                <field name="name"/>
                                 <field name="patinet_age" />
                             </group>
                             <group>
