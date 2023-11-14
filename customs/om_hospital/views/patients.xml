@@ -9,6 +9,12 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+                        <div class="oe_title">
+                            <label for="name_seq" class="oe_edit_only" />
+                            <h1>
+                                <field name="name_seq" />
+                            </h1>                        
+                        </div>
                         <group>
                             <group>
                                 <field name="patinet_name" />
@@ -38,6 +44,7 @@
             <field name="model">hospital.patient</field>
             <field name="arch" type="xml">
                 <tree string="Hospital Paitnet">
+                    <field name="name_seq" />
                     <field name="patinet_name" />
                     <field name="patinet_age" />
                     <field name="notes" />

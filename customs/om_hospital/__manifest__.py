@@ -8,6 +8,7 @@
     'depends': ['base', 'mail'],
     'data': [
         'security/ir.model.access.csv',
+        'data/patient_sequence.xml',
         'views/patients.xml',
     ],
     'demo': [

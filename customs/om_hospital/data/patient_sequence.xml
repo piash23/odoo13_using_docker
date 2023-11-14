@@ -1,0 +1,12 @@
+<!-- FILEPATH: /workspaces/odoo13_using_docker/customs/om_hospital/data/patient_sequence.xml -->
+
+<odoo>
+    <data noupdate="1">
+        <record id="sequence_patient" model="ir.sequence">
+            <field name="name">Patient Sequence</field>
+            <field name="code">hospital.patient.sequence</field>
+            <field name="prefix">PAT/</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>
