@@ -31,6 +31,12 @@ class HospitalPatient(models.Model):
                 rec.age_group = 'major'
             else:
                 rec.age_group = 'minor'
+
+    @api.constrains('patient_age')
+    def check_age(self):
+        for rec in self:
+            if rec.patient_age < 5:
+                raise models.ValidationError("The age must be greater than 5")
     
     @api.model
     def create(self, vals):
