@@ -5,7 +5,7 @@
     'summary': 'Hospital Management System',
     'description': 'This module provides a complete solution for managing a hospital.',
     'license': 'LGPL-3',
-    'depends': ['base', 'mail'],
+    'depends': ['base', 'mail', 'sale'],
     'data': [
         'security/ir.model.access.csv',
         'data/patient_sequence.xml',

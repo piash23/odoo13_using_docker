@@ -1,6 +1,12 @@
 from odoo import _, api, fields, models
 
 
+class SalesOrderInherit(models.Model):
+    _inherit = 'sale.order'
+
+    patinet_name = fields.Char(string="Patient Name")
+
+
 class HospitalPatient(models.Model):
     _name = "hospital.patient"
     _description = 'Hospital Patient'
