@@ -9,7 +9,7 @@
             <field name="inherit_id" ref="sale.view_order_form" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='partner_id']" position="after">
-                    <field name="patinet_name" />
+                    <field name="patient_name" />
                 </xpath>
             </field>
         </record>
@@ -30,9 +30,11 @@
                         </div>
                         <group>
                             <group>
-                                <field name="patinet_name" />
+                                <field name="patient_name" />
                                 <field name="name"/>
-                                <field name="patinet_age" />
+                                <field name="patient_age" />
+                                <field name="patient_gender"/>
+                                
                             </group>
                             <group>
                                 <field name="notes" />
@@ -58,11 +60,30 @@
             <field name="arch" type="xml">
                 <tree string="Hospital Paitnet">
                     <field name="name_seq" />
-                    <field name="patinet_name" />
-                    <field name="patinet_age" />
+                    <field name="patient_name" />
+                    <field name="patient_age" />
                     <field name="notes" />
 
                 </tree>
+            </field>
+        </record>
+
+        <record id="hospital_patient_search_view" model="ir.ui.view">
+            <field name="name">hospital.patient.search.view</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" string="patient" filter_domain="['|', ('patient_name', 'ilike', self), ('name_seq', 'ilike', self)]" />
+                    <field name="patient_name" />
+                    <field name="patient_age" />
+                    <field name="notes" />
+                    <separator />
+                    <filter string="Male" name="male_filter" domain="[('patient_gender', '=', 'male')]" />
+                    <filter string="Female" name="female_filter" domain="[('patient_gender', '=', 'fe_male')]" />
+                    <group expand="0" string="Group By">
+                        <filter string="Gender" name="gender" context="{'group_by': 'patient_gender'}"/>
+                    </group>
+                </search>
             </field>
         </record>
 
@@ -75,7 +96,6 @@
 
         <!-- Define the menu item for the hospital.patient model -->
         <menuitem id="menu_hospital_patient" name="Hospital Patients" />
-        <menuitem id="menu_hospital_patient_form" name="Patients" parent="menu_hospital_patient"
-            action="action_hospital_patient" />
+        <menuitem id="menu_hospital_patient_form" name="Patients" parent="menu_hospital_patient" action="action_hospital_patient" />
     </data>
 </odoo>

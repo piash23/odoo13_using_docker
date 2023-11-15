@@ -4,22 +4,24 @@ from odoo import _, api, fields, models
 class SalesOrderInherit(models.Model):
     _inherit = 'sale.order'
 
-    patinet_name = fields.Char(string="Patient Name")
+    patient_name = fields.Char(string="Patient Name")
 
 
 class HospitalPatient(models.Model):
     _name = "hospital.patient"
     _description = 'Hospital Patient'
     _inherit = ['mail.thread', 'mail.activity.mixin']
-    # _rec_name = 'patinet_name'
+    # _rec_name = 'patient_name'
 
-    patinet_name = fields.Char(string="Patient Name", required=True)
-    patinet_age = fields.Integer(string="Age")
+    patient_name = fields.Char(string="Patient Name", required=True)
+    patient_age = fields.Integer(string="Age")
     notes = fields.Text(string='Notes')
     image = fields.Binary(string="Image")
     name = fields.Char(string="Test")
     name_seq = fields.Char(string='Order Reference', required=True, copy=False, readonly=True,
                            index=True, default=lambda self: _('New'))
+
+    patient_gender = fields.Selection([('male', "Male"),('fe_male', 'Female')], string="gender", default='male')
     
     @api.model
     def create(self, vals):
