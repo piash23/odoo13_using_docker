@@ -13,8 +13,8 @@ class HospitalPatient(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     # _rec_name = 'patient_name'
 
-    patient_name = fields.Char(string="Patient Name", required=True)
-    patient_age = fields.Integer(string="Age")
+    patient_name = fields.Char(string="Patient Name", required=True, track_visibility='always')
+    patient_age = fields.Integer(string="Age", track_visibility='always')
     notes = fields.Text(string='Notes')
     image = fields.Binary(string="Image")
     name = fields.Char(string="Test")
