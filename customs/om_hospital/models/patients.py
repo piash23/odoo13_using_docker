@@ -22,6 +22,15 @@ class HospitalPatient(models.Model):
                            index=True, default=lambda self: _('New'))
 
     patient_gender = fields.Selection([('male', "Male"),('fe_male', 'Female')], string="gender", default='male')
+    age_group = fields.Selection([('major', 'Major'), ('minor', 'Minor')], string="Age Group", compute='set_age_group')
+
+    @api.depends('patient_age')
+    def set_age_group(self):
+        for rec in self:
+            if rec.patient_age > 18:
+                rec.age_group = 'major'
+            else:
+                rec.age_group = 'minor'
     
     @api.model
     def create(self, vals):
