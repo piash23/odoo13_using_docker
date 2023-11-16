@@ -23,6 +23,7 @@ class HospitalPatient(models.Model):
 
     patient_gender = fields.Selection([('male', "Male"),('fe_male', 'Female')], string="gender", default='male')
     age_group = fields.Selection([('major', 'Major'), ('minor', 'Minor')], string="Age Group", compute='set_age_group')
+    appointment_count = fields.Integer(string="Appointment", compute='get_appointment_count')
 
     @api.depends('patient_age')
     def set_age_group(self):
@@ -46,3 +47,16 @@ class HospitalPatient(models.Model):
         result = super(HospitalPatient, self).create(vals)
         return result
 
+    def get_appointment_count(self):
+        count = self.env['hospital.appointment'].search_count([('patient_id', '=', self.id)])
+        self.appointment_count = count
+
+    def open_patient_appointment(self):
+        return {
+            'name': _('Appointment'),
+            'domain': [('patient_id', '=', self.id)],
+            'res_model': 'hospital.appointment',
+            'view_id': False,
+            'view_mode': 'tree,form',
+            'type': 'ir.actions.act_window'
+        }

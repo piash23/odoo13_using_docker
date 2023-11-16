@@ -22,6 +22,14 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+                    <div class="oe_button_box" name="hospital_patient_button_box">
+                        <button name="open_patient_appointment"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-calendar">
+                                <field name="appointment_count" string="Appointments" widget="statinfo"/>
+                        </button>
+                    </div>
                         <div class="oe_title">
                             <label for="name_seq" class="oe_edit_only" />
                             <h1>
