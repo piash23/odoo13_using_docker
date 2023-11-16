@@ -8,8 +8,10 @@
     'depends': ['base', 'mail', 'sale'],
     'data': [
         'security/ir.model.access.csv',
+        'data/appointment_sequence.xml',
         'data/patient_sequence.xml',
         'views/patients.xml',
+        'views/appointment.xml',
     ],
     'demo': [
 

@@ -1,0 +1,10 @@
+<odoo>
+    <data noupdate="1">
+        <record id="sequence_appointment" model="ir.sequence">
+            <field name="name">Appointment Sequence</field>
+            <field name="code">hospital.appointment.sequence</field>
+            <field name="prefix">APP/</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

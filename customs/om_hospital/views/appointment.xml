@@ -1,0 +1,62 @@
+<!-- FILEPATH: /workspaces/odoo13_using_docker/customs/om_hospital/views/appointment.xml -->
+
+<odoo>
+    <data>
+        <!-- Appointment Form View -->
+        <record id="view_appointment_form" model="ir.ui.view">
+            <field name="name">hospital.appointment.form</field>
+            <field name="model">hospital.appointment</field>
+            <field name="arch" type="xml">
+                <form string="Appointment">
+                    <sheet>
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="patient_age"/>
+                            <field name="appointment_date"/>
+                            <field name="notes"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Appointment Tree View -->
+        <record id="view_appointment_tree" model="ir.ui.view">
+            <field name="name">hospital.appointment.tree</field>
+            <field name="model">hospital.appointment</field>
+            <field name="arch" type="xml">
+                <tree string="Appointment">
+                    <field name="patient_id"/>
+                    <field name="patient_age"/>
+                    <field name="appointment_date"/>
+                    <field name="notes"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Appointment Search View -->
+        <record id="view_appointment_search" model="ir.ui.view">
+            <field name="name">hospital.appointment.search</field>
+            <field name="model">hospital.appointment</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="patient_id"/>
+                    <field name="patient_age"/>
+                    <field name="appointment_date"/>
+                    <field name="notes"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Appointment Action -->
+        <record id="action_appointment" model="ir.actions.act_window">
+            <field name="name">Appointment</field>
+            <field name="res_model">hospital.appointment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_appointment_search"/>
+        </record>
+
+        <!-- Appointment Menuitem -->
+        <menuitem id="menu_appointment" name="Appointment" parent="menu_hospital_patient" action="action_appointment"/>
+    </data>
+</odoo>
