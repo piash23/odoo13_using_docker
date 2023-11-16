@@ -2,6 +2,14 @@
 
 <odoo>
     <data>
+        <record id="open_patient_appointment" model="ir.actions.act_window">
+            <field name="name">Hospital appointment</field>
+            <field name="res_model">hospital.appointment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('patient_id', '=', active_id)]</field>
+        </record>
+
+
         <!-- Define inherit view for the sale.order model -->
         <record id="sale_order_inherit_hospital" model="ir.ui.view">
             <field name="name">sale.order.inherit</field>
@@ -22,14 +30,14 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                    <div class="oe_button_box" name="hospital_patient_button_box">
-                        <button name="open_patient_appointment"
-                                type="object"
-                                class="oe_stat_button"
-                                icon="fa-calendar">
-                                <field name="appointment_count" string="Appointments" widget="statinfo"/>
-                        </button>
-                    </div>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="open_patient_appointment" type="object" class="oe_stat_button" icon="fa-calendar">
+                                <field name="appointment_count" string="(O)Appointments" widget="statinfo"/>
+                            </button>
+                            <button name="%(open_patient_appointment)d" type="action" class="oe_stat_button" icon="fa-stethoscope">
+                                <field name="appointment_count" string="(A)Appointments" widget="statinfo"/>
+                            </button>
+                        </div>
                         <div class="oe_title">
                             <label for="name_seq" class="oe_edit_only" />
                             <h1>
