@@ -10,6 +10,7 @@
         'security/ir.model.access.csv',
         'data/appointment_sequence.xml',
         'data/patient_sequence.xml',
+        'data/patient_data.xml',
         'views/patients.xml',
         'views/appointment.xml',
         'report/patient_report.xml',
