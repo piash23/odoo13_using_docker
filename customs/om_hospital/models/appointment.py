@@ -25,3 +25,19 @@ class HospitalAppointment(models.Model):
                 'hospital.appointment.sequence') or _('New')
         result = super(HospitalAppointment, self).create(vals)
         return result
+
+    def action_confirm(self):
+        for rec in self:
+            rec.state = 'confirm'
+    
+    def action_done(self):
+        for rec in self:
+            rec.state = 'done'
+
+    def action_cancel(self):
+        for rec in self:
+            rec.state = 'cancel'
+    
+    def action_draft(self):
+        for rec in self:
+            rec.state = 'draft'
