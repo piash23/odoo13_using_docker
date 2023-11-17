@@ -1,6 +1,15 @@
 from odoo import _, api, fields, models
 
 
+class ResPartnerInherit(models.Model):
+    _inherit = 'res.partner'
+
+    @api.model
+    def create(self, vals):
+        res = super(ResPartnerInherit, self).create(vals)
+        print("Create: ", res)
+        return res
+
 class SalesOrderInherit(models.Model):
     _inherit = 'sale.order'
 
