@@ -8,6 +8,10 @@
             <field name="model">hospital.appointment</field>
             <field name="arch" type="xml">
                 <form string="Appointment">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                </header>
+
                     <sheet>
                         <group>
                             <field name="patient_id"/>
