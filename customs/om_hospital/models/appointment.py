@@ -16,6 +16,8 @@ class HospitalAppointment(models.Model):
     appointment_date = fields.Date(string="Date", required=True)
     state = fields.Selection([
         ('draft','Draft'), ('confirm', 'Confirm'), ('done', 'Done'), ('cancel', 'Cancel')], default='draft', string="Status")
+    doctor_note = fields.Text(string="Doctor's Note")
+    prescription = fields.Text(string="Prescription")
 
 
     @api.model

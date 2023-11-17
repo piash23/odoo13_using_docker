@@ -23,6 +23,16 @@
                             <field name="appointment_date"/>
                             <field name="notes"/>
                         </group>
+                        <notebook>
+                            <page string="Doctor Prescription">
+                                <group>
+                                    <field name="doctor_note"/>
+                                </group>
+                            </page>
+                            <page string="Pharmacy">
+                                <field name="prescription"/>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
