@@ -33,6 +33,7 @@ class HospitalPatient(models.Model):
     patient_gender = fields.Selection([('male', "Male"),('fe_male', 'Female')], string="gender", default='male')
     age_group = fields.Selection([('major', 'Major'), ('minor', 'Minor')], string="Age Group", compute='set_age_group')
     appointment_count = fields.Integer(string="Appointment", compute='get_appointment_count')
+    active = fields.Boolean(string="Active", default=True)
 
     @api.depends('patient_age')
     def set_age_group(self):
