@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- hospital.doctor form view -->
+    <record id="hospital_doctor_view_form" model="ir.ui.view">
+        <field name="name">hospital.doctor.view.form</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <form string="Doctors">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="gender"/>
+                            <field name="user_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- hospital.doctor tree view -->
+    <record id="hospital_doctor_view_tree" model="ir.ui.view">
+        <field name="name">hospital.doctor.view.tree</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="user_id"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- hospital.doctor action window -->
+    <record id="hospital_doctor_action" model="ir.actions.act_window">
+        <field name="name">doctors</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.doctor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Add Text Here
+            </p><p>
+                More details about what a user can do with this object will be OK
+            
+            </p>
+        </field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="hospital_doctor_menu_act" name="Doctors" parent="menu_hospital_root" action="hospital_doctor_action" sequence="33"/>
+</odoo>

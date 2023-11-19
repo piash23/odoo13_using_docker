@@ -8,11 +8,13 @@
     'depends': ['base', 'mail', 'sale'],
     'data': [
         'security/ir.model.access.csv',
+        'security/security.xml',
         'data/appointment_sequence.xml',
         'data/patient_sequence.xml',
         'data/patient_data.xml',
         'views/patients.xml',
         'views/appointment.xml',
+        'views/doctors.xml',
         'report/patient_report.xml',
     ],
     'demo': [

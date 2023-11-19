@@ -76,6 +76,6 @@
         </record>
 
         <!-- Appointment Menuitem -->
-        <menuitem id="menu_appointment" name="Appointment" parent="menu_hospital_patient" action="action_appointment"/>
+        <menuitem id="menu_appointment" name="Appointment" parent="menu_hospital_root" action="action_appointment"/>
     </data>
 </odoo>

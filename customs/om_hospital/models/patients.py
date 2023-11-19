@@ -34,6 +34,7 @@ class HospitalPatient(models.Model):
     age_group = fields.Selection([('major', 'Major'), ('minor', 'Minor')], string="Age Group", compute='set_age_group')
     appointment_count = fields.Integer(string="Appointment", compute='get_appointment_count')
     active = fields.Boolean(string="Active", default=True)
+    doctor_id = fields.Many2one('hospital.doctor', string="Doctor")
 
     @api.depends('patient_age')
     def set_age_group(self):
