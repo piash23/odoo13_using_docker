@@ -9,13 +9,14 @@
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
+        'report/patient_report.xml',
+        'wizard/create_appointment.xml',
         'data/appointment_sequence.xml',
         'data/patient_sequence.xml',
         'data/patient_data.xml',
         'views/patients.xml',
         'views/appointment.xml',
         'views/doctors.xml',
-        'report/patient_report.xml',
     ],
     'demo': [
 

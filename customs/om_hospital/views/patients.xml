@@ -29,6 +29,10 @@
             <field name="model">hospital.patient</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button name="%(create_appointment_action)d" type="action" string="Create Appointment" class="oe_highlight"/>
+
+                    </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
                             <button name="open_patient_appointment" type="object" class="oe_stat_button" icon="fa-calendar">
