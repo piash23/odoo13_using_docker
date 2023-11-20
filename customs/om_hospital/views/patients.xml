@@ -7,6 +7,7 @@
             <field name="res_model">hospital.appointment</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[('patient_id', '=', active_id)]</field>
+            <field name="binding_model_id" ref="om_hospital.model_hospital_patient"/>
         </record>
 
 
