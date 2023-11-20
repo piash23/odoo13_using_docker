@@ -8,29 +8,43 @@
             <field name="model">hospital.appointment</field>
             <field name="arch" type="xml">
                 <form string="Appointment">
-                <header>
-                    <button name="action_confirm" string="Confirm" type="object" class="oe_highlight" states="draft"/>
-                    <button name="action_done" string="Done" type="object" class="oe_highlight" states="confirm"/>
-                    <button name="action_draft" string="Reset to Draft" type="object" class="oe_highlight" states="cancel"/>
-                    <button name="action_cancel" string="Cancel" type="object" class="oe_highlight" states="confirm"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
-                </header>
+                    <header>
+                        <button name="action_confirm" string="Confirm" type="object"
+                            class="oe_highlight" states="draft" />
+                        <button name="action_done" string="Done" type="object" class="oe_highlight"
+                            states="confirm" />
+                        <button name="action_draft" string="Reset to Draft" type="object"
+                            class="oe_highlight" states="cancel" />
+                        <button name="action_cancel" string="Cancel" type="object"
+                            class="oe_highlight" states="confirm" />
+                        <field name="state" widget="statusbar"
+                            statusbar_visible="draft,confirm,done" />
+                    </header>
 
                     <sheet>
                         <group>
-                            <field name="patient_id"/>
-                            <field name="patient_age"/>
-                            <field name="appointment_date"/>
-                            <field name="notes"/>
+                            <field name="patient_id" />
+                            <field name="patient_age" />
+                            <field name="appointment_date" />
+                            <field name="notes" />
                         </group>
                         <notebook>
                             <page string="Doctor Prescription">
-                                <group>
-                                    <field name="doctor_note"/>
-                                </group>
+                                <field name="appointment_line_ids">
+                                    <tree string="Prescription" editable='bottom'>
+                                        <field name="product_id" />
+                                        <field name="product_qty" />
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="product_id" />
+                                            <field name="product_qty" />
+                                        </group>
+                                    </form>
+                                </field>
                             </page>
                             <page string="Pharmacy">
-                                <field name="prescription"/>
+                                <field name="prescription" />
                             </page>
                         </notebook>
                     </sheet>
@@ -44,11 +58,11 @@
             <field name="model">hospital.appointment</field>
             <field name="arch" type="xml">
                 <tree string="Appointment">
-                    <field name="patient_id"/>
+                    <field name="patient_id" />
                     <!-- <field name="patient_age" sum="Total of Ages"/> -->
-                    <field name="patient_age" avg="AVG of Ages"/>
-                    <field name="appointment_date"/>
-                    <field name="notes"/>
+                    <field name="patient_age" avg="AVG of Ages" />
+                    <field name="appointment_date" />
+                    <field name="notes" />
                 </tree>
             </field>
         </record>
@@ -59,10 +73,10 @@
             <field name="model">hospital.appointment</field>
             <field name="arch" type="xml">
                 <search>
-                    <field name="patient_id"/>
-                    <field name="patient_age"/>
-                    <field name="appointment_date"/>
-                    <field name="notes"/>
+                    <field name="patient_id" />
+                    <field name="patient_age" />
+                    <field name="appointment_date" />
+                    <field name="notes" />
                 </search>
             </field>
         </record>
@@ -72,10 +86,11 @@
             <field name="name">Appointment</field>
             <field name="res_model">hospital.appointment</field>
             <field name="view_mode">tree,form</field>
-            <field name="search_view_id" ref="view_appointment_search"/>
+            <field name="search_view_id" ref="view_appointment_search" />
         </record>
 
         <!-- Appointment Menuitem -->
-        <menuitem id="menu_appointment" name="Appointment" parent="menu_hospital_root" action="action_appointment"/>
+        <menuitem id="menu_appointment" name="Appointment" parent="menu_hospital_root"
+            action="action_appointment" />
     </data>
 </odoo>

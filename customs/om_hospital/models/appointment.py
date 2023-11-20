@@ -18,6 +18,7 @@ class HospitalAppointment(models.Model):
         ('draft','Draft'), ('confirm', 'Confirm'), ('done', 'Done'), ('cancel', 'Cancel')], default='draft', string="Status")
     doctor_note = fields.Text(string="Doctor's Note")
     prescription = fields.Text(string="Prescription")
+    appointment_line_ids = fields.One2many('hospital.appointment.lines', 'appointment_id', string="Appointment Lines")
 
 
     @api.model
@@ -43,3 +44,12 @@ class HospitalAppointment(models.Model):
     def action_draft(self):
         for rec in self:
             rec.state = 'draft'
+
+
+class HospitalAppointmentLines(models.Model):
+    _name = "hospital.appointment.lines"
+    _description = "Appointment Lines"
+
+    product_id = fields.Many2one('product.product', string="Medicine", required=True)
+    product_qty = fields.Integer(string="Quantity")
+    appointment_id = fields.Many2one('hospital.appointment', string="Appointment")
