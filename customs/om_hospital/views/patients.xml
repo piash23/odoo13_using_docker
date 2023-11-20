@@ -63,6 +63,7 @@
                                 <field name="image" />
                                 <field name="active" invisible="1"/>
                                 <field name="doctor_id" options="{'no_create_edit': 1, 'no_create':1} "/>
+                                <field name="doctor_gender"/>
                             </group>
 
 

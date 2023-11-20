@@ -35,6 +35,12 @@ class HospitalPatient(models.Model):
     appointment_count = fields.Integer(string="Appointment", compute='get_appointment_count')
     active = fields.Boolean(string="Active", default=True)
     doctor_id = fields.Many2one('hospital.doctor', string="Doctor")
+    doctor_gender = fields.Selection(string='Doctor\'s gender', selection=[('male', 'Male'), ('female', 'Female'),])
+
+    @api.onchange('doctor_id')
+    def set_doctor_gender(self):
+        self.doctor_gender = self.doctor_id.gender
+    
 
     @api.depends('patient_age')
     def set_age_group(self):
