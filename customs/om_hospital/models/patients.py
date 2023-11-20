@@ -22,6 +22,13 @@ class HospitalPatient(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     # _rec_name = 'patient_name'
 
+
+    def name_get(self):
+        res = []
+        for rec in self:
+            res.append((rec.id, '%s - %s' % (rec.patient_name, rec.patient_age)))
+        return res
+
     patient_name = fields.Char(string="Patient Name", required=True, track_visibility='always')
     patient_age = fields.Integer(string="Age", track_visibility='always')
     notes = fields.Text(string='Notes')
