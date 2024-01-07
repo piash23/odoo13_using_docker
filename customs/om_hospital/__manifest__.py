@@ -17,6 +17,7 @@
         'views/patients.xml',
         'views/appointment.xml',
         'views/doctors.xml',
+        'data/mail_template.xml',
     ],
     'demo': [
 

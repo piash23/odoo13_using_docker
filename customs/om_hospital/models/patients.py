@@ -43,6 +43,8 @@ class HospitalPatient(models.Model):
     active = fields.Boolean(string="Active", default=True)
     doctor_id = fields.Many2one('hospital.doctor', string="Doctor")
     doctor_gender = fields.Selection(string='Doctor\'s gender', selection=[('male', 'Male'), ('female', 'Female'),])
+    user_id = fields.Many2one('res.users', string='PRO', default=lambda self: self.env.user)
+    email = fields.Char(string='Email')
 
     @api.onchange('doctor_id')
     def set_doctor_gender(self):

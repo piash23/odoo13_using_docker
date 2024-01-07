@@ -56,7 +56,8 @@
                                 <field name="name"/>
                                 <field name="patient_age" />
                                 <field name="patient_gender"/>
-
+                                <field name="user_id"/>
+                                <field name="email"/>
                             </group>
                             <group>
                                 <field name="age_group"/>
