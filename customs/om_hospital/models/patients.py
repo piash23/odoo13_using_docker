@@ -10,6 +10,7 @@ class ResPartnerInherit(models.Model):
         print("Create: ", res)
         return res
 
+
 class SalesOrderInherit(models.Model):
     _inherit = 'sale.order'
 
@@ -20,8 +21,8 @@ class HospitalPatient(models.Model):
     _name = "hospital.patient"
     _description = 'Hospital Patient'
     _inherit = ['mail.thread', 'mail.activity.mixin']
-    # _rec_name = 'patient_name'
 
+    # _rec_name = 'patient_name'
 
     def name_get(self):
         res = []
@@ -37,19 +38,18 @@ class HospitalPatient(models.Model):
     name_seq = fields.Char(string='Order Reference', required=True, copy=False, readonly=True,
                            index=True, default=lambda self: _('New'))
 
-    patient_gender = fields.Selection([('male', "Male"),('fe_male', 'Female')], string="gender", default='male')
+    patient_gender = fields.Selection([('male', "Male"), ('fe_male', 'Female')], string="gender", default='male')
     age_group = fields.Selection([('major', 'Major'), ('minor', 'Minor')], string="Age Group", compute='set_age_group')
     appointment_count = fields.Integer(string="Appointment", compute='get_appointment_count')
     active = fields.Boolean(string="Active", default=True)
     doctor_id = fields.Many2one('hospital.doctor', string="Doctor")
-    doctor_gender = fields.Selection(string='Doctor\'s gender', selection=[('male', 'Male'), ('female', 'Female'),])
+    doctor_gender = fields.Selection(string='Doctor\'s gender', selection=[('male', 'Male'), ('female', 'Female'), ])
     user_id = fields.Many2one('res.users', string='PRO', default=lambda self: self.env.user)
     email = fields.Char(string='Email')
 
     @api.onchange('doctor_id')
     def set_doctor_gender(self):
         self.doctor_gender = self.doctor_id.gender
-    
 
     @api.depends('patient_age')
     def set_age_group(self):
@@ -64,7 +64,7 @@ class HospitalPatient(models.Model):
         for rec in self:
             if rec.patient_age < 5:
                 raise models.ValidationError("The age must be greater than 5")
-    
+
     @api.model
     def create(self, vals):
         if vals.get('name_seq', _('New')) == _('New'):
@@ -85,4 +85,29 @@ class HospitalPatient(models.Model):
             'view_id': False,
             'view_mode': 'tree,form',
             'type': 'ir.actions.act_window'
+        }
+
+    def send_by_email(self):
+        template_id = self.env.ref('om_hospital.email_template_patient_card').id
+        self.env['mail.template'].browse(template_id).send_mail(self.id, force_send=True)
+        ctx = {
+            'default_model': 'hospital.patient',
+            'default_res_id': self.ids[0],
+            'default_use_template': bool(template_id),
+            'default_template_id': template_id,
+            'default_composition_mode': 'comment',
+            'mark_so_as_sent': True,
+            'custom_layout': "mail.mail_notification_paynow",
+            'proforma': self.env.context.get('proforma', False),
+            'force_email': True,
+            # 'model_description': self.with_context(lang=lang).type_name,
+        }
+        return {
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'res_model': 'mail.compose.message',
+            'views': [(False, 'form')],
+            'view_id': False,
+            'target': 'new',
+            'context': ctx,
         }

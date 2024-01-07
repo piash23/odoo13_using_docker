@@ -33,6 +33,7 @@
                     <header>
                         <button name="%(create_appointment_action)d" type="action" string="Create Appointment" class="oe_highlight"
                         context="{'default_patient_id': active_id}"/>
+                        <button name="send_by_email" type="object" string="Send by Email" class="oe_highlight"/>
 
                     </header>
                     <sheet>
