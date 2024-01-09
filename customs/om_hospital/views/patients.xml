@@ -54,6 +54,7 @@
                         <group>
                             <group>
                                 <field name="patient_name" />
+                                <field name="patient_name_upper"/>
                                 <field name="name"/>
                                 <field name="patient_age" />
                                 <field name="patient_gender"/>

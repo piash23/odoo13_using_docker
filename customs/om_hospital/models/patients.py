@@ -47,6 +47,17 @@ class HospitalPatient(models.Model):
     user_id = fields.Many2one('res.users', string='PRO', default=lambda self: self.env.user)
     contact_number = fields.Char(string='Contact Number')
     email = fields.Char(string='Email')
+    patient_name_upper = fields.Char(compute='_compute_upper_name', inverse='_inverse_upper_name')
+
+
+    @api.depends('patient_name')
+    def _compute_upper_name(self):
+        for rec in self:
+            rec.patient_name_upper = rec.patient_name.upper()
+
+    def _inverse_upper_name(self):
+        for rec in self:
+            rec.patient_name = rec.patient_name_upper.capitalize()
 
     @api.onchange('doctor_id')
     def set_doctor_gender(self):
