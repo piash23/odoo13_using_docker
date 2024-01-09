@@ -16,6 +16,7 @@ class CReateAPpointment(models.TransientModel):
             'appointment_date': self.appointment_date,
             'notes': 'Created from the wizard',
         })
+        self.patient_id.message_post(body='Appointment Created Successfully', subject='Appointment Creation')
         #return to the newly created appointment
         return {
             'name': _('Appointments'),
