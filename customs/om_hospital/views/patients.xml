@@ -64,9 +64,11 @@
                                 <field name="age_group"/>
                                 <field name="notes" />
                                 <field name="image" />
+                                <field name="contact_number" group="om_hospital.group_hospital_doctor"/>
                                 <field name="active" invisible="1"/>
                                 <field name="doctor_id" options="{'no_create_edit': 1, 'no_create':1} "/>
                                 <field name="doctor_gender"/>
+
                             </group>
 
 

@@ -45,6 +45,7 @@ class HospitalPatient(models.Model):
     doctor_id = fields.Many2one('hospital.doctor', string="Doctor")
     doctor_gender = fields.Selection(string='Doctor\'s gender', selection=[('male', 'Male'), ('female', 'Female'), ])
     user_id = fields.Many2one('res.users', string='PRO', default=lambda self: self.env.user)
+    contact_number = fields.Char(string='Contact Number')
     email = fields.Char(string='Email')
 
     @api.onchange('doctor_id')
