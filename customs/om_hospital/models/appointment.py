@@ -1,7 +1,6 @@
 from odoo import _, api, fields, models
 
 
-
 class HospitalAppointment(models.Model):
     _name = "hospital.appointment"
     _description = 'Hospital Appointment'
@@ -28,6 +27,11 @@ class HospitalAppointment(models.Model):
                 'hospital.appointment.sequence') or _('New')
         result = super(HospitalAppointment, self).create(vals)
         return result
+
+    def write(self, values):
+        res = super(HospitalAppointment, self).write(values)
+        print("Test Write Method")
+        return res
 
     def action_confirm(self):
         for rec in self:
