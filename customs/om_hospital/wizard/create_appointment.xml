@@ -13,8 +13,12 @@
                 </group>
                 <footer>
                     <button string="Create Appointment" name="create_appointment" type="object"
-                        class="oe_highlight" /> or <button string="Cancel" class="oe_highlight"
+                        class="oe_highlight" />
+                    <button string="Get Data" name="get_data" type="object"
+                        class="oe_highlight" />
+                    <button string="Cancel" class="oe_highlight"
                         special="cancel" />
+
                 </footer>
             </form>
         </field>

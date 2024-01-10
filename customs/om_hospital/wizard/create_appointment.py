@@ -26,3 +26,8 @@ class CReateAPpointment(models.TransientModel):
             'res_id': appointment_id.id,
             'type': 'ir.actions.act_window',
         }
+
+    def get_data(self):
+        print("Get Data Method Called from Wizard")
+        print("Patient ID: ", self.patient_id.id)
+        print("Appointment Date: ", self.appointment_date)
